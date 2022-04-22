@@ -1,0 +1,36 @@
+{% extends 'CRUD/main.html' %}
+
+{% block content %}
+<!--<h1>Login</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Login">
+
+</form>
+
+<p>Dont have an account</p><a href="{% url 'register' %}">Register</a>-->
+<h2 class ="text-center"> Login</h2>
+
+<div class = "col-md-6 offset-md-3"> 
+	<form method ="POST">
+		
+		{% csrf_token %}
+
+	  <div class="form-group">
+
+	    <input type="text" class="form-control" placeholder="Enter Username" name = "username">
+
+	  </div>
+	  <div class="form-group">
+
+	    <input type="password" class="form-control"  placeholder="Enter Password" name="password"> 
+	  </div>
+	 
+
+	  <button type="submit" class="btn btn-secondary">Login</button>
+	</form>
+
+</div>
+
+{% endblock %}

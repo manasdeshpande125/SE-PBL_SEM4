@@ -1,0 +1,9 @@
+{% extends 'CRUD/main.html' %}
+
+{% block content %}
+<h1>Details:{{Details}}</h1>
+<h1>User: {{request.user}}</h1>
+<h1>Name: {{user.first_name}}</h1>
+<h1>Last Name: {{user.last_name}}</h1>
+<h1>Email: {{user.email}}</h1>
+{% endblock %}

@@ -1,0 +1,7 @@
+<a href="{% url 'SAP' %}">Back</a>
+<form method="POST" >
+    {% csrf_token %}
+    <p>Want to delete?</p>
+    <h1>{{Achievements.id}}</h1>
+    <input value="delete" type="Submit"> 
+</form>

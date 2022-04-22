@@ -1,0 +1,50 @@
+{% extends 'CRUD/main.html' %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<!--<p>{{request.user}}</p>-->
+<p>First Name: {{request.user.first_name}}</p>
+<p>Last Name: {{request.user.last_name}}</p>
+<!--<a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'change_password' %}">Change password</a>
+{% else %}
+<a href="{% url 'login' %}">Login</a>
+{% endif %}-->
+<hr>
+<div class="container">
+<form method="GET">
+    <input type="text" name="search_area" value="{{search_input}}">
+    <input type="submit" value="search">
+</form>
+<a href="{% url 'SAP-create' %}">Add Achievements</a>
+<table class="table">
+    <tr>
+    <th>Title</th>
+    <th>Date</th>
+    <th>Financial Support</th>
+    <th>Activity Remarks</th>
+    <th>Certificate</th>
+    <th>Actions</th>
+    </tr>
+{%for Achievements in SAP%}
+
+<tr>
+    <td>{{Achievements.title}}</td>
+    <!--<td><a href="{% url 'Details' Achievements.id %}">View</a></td>-->
+    <td>{{Achievements.created}}</td>
+    <td>{{Achievements.support}}</td>
+    <td>{{Achievements.description}}</td>
+    <td><a href="/media/{{Achievements.certificate}}" class="button">View</a></td>
+    <td>
+        <a href="{% url 'SAP-Edit' Achievements.id %}" class="button">Edit</a>
+    <a href="{% url 'SAP-delete' Achievements.id %}" class="button">Delete</a></td>
+
+</tr>
+{%empty%}
+<h3>No items</h3>
+{%endfor%}
+
+</table>
+</div>
+{% endblock %}
+
