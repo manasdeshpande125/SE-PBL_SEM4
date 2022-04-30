@@ -1,14 +1,13 @@
 {% extends 'CRUD/main.html' %}
 
 {% block content %}
-<h3>SAP Form</h3>
-
+<h3>Profile Form</h3>
+<!--<a href="{% url 'SAP' %}" class="button">Back</a>-->
 <form method="POST" action="" enctype="multipart/form-data" class="form-group"> 
     <div class="container">
    {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" value="Submit" class="btn btn-primary">
-    <a href="{% url 'SAP' %}" class="btn btn-primary">Back</a>
+    <input type="submit" value="submit" class="btn btn-primary">
 </div>
 </form>
 {% endblock %}

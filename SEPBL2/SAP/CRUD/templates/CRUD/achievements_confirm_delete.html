@@ -1,7 +1,13 @@
-<a href="{% url 'SAP' %}">Back</a>
-<form method="POST" >
+{% extends 'CRUD/main.html' %}
+
+{% block content %}
+
+
+<form method="POST" class="form-group">
     {% csrf_token %}
-    <p>Want to delete?</p>
+    <p>Are You Sure You To Want to delete?</p>
     <h1>{{Achievements.id}}</h1>
-    <input value="delete" type="Submit"> 
+    <input value="Delete" type="Submit" class="btn btn-primary"> 
+    <a href="{% url 'SAP' %}" class="btn btn-primary">Back</a>
 </form>
+{% endblock %}

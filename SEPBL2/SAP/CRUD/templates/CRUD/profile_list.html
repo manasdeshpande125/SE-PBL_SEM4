@@ -1,0 +1,26 @@
+{% extends 'CRUD/main.html' %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<p>First Name: {{request.user.first_name}}</p>
+<hr>
+<p>Last Name: {{request.user.last_name}}</p>
+<hr>
+{%endif%}
+{%for pr in prof%}
+<p>Roll Number:{{pr.roll}}</p>
+<hr>
+<p>Division:{{pr.div}}</p>
+<hr>
+<p>Department:{{pr.dept}}</p>
+<hr>
+<p>Year:{{pr.year}}</p>
+<hr>
+<a href="{% url 'edit_prof' pr.id %}" class="btn btn-primary">Edit</a>
+{%empty%}
+<h3>Add Your Profile</h3>
+<a href="{% url 'new_prof'  %}" class="btn btn-primary">Add</a>
+
+{%endfor%}
+<a href="{% url 'SAP'  %}" class="btn btn-primary">Back</a>
+{% endblock %}

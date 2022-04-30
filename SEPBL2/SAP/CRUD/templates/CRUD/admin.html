@@ -1,0 +1,56 @@
+{% extends 'CRUD/main.html' %}
+
+{% block content %}
+{%load static%}
+
+{% if request.user.is_superuser and request.user.is_authenticated %}
+<h4>Welcome {{request.user.first_name}}&nbsp;{{request.user.last_name}}!</h4>
+<hr>
+<div class="container">
+    <form method="GET" class="form-group" >
+        <input type="text" name="search_area" value="{{search_input}}" class="form-control">
+        <input type="submit" value="Search" class="btn btn-primary">
+    </form>
+<!--<a href="{% url 'SAP-create' %}">Add Achievements</a>-->
+<table class="table">
+    <tr>
+    <th>Title</th>
+    <th>UserName</th>
+    <th>Date</th>
+    <th>Financial Support</th>
+    <th>Activity Remarks</th>
+    <th>Certificate</th>
+    <th>Actions</th>
+    </tr>
+    
+    
+    {% for Achievements in SAP %}
+
+<tr>
+    <td>{{Achievements.title}}</td>
+    <!--<td><a href="{% url 'Details' Achievements.id %}">View</a></td>-->
+    <td>{{Achievements.user}}</td>
+    <td>{{Achievements.created}}</td>
+    <td>{{Achievements.support}}</td>
+    <td>{{Achievements.description}}</td>
+    <td><a href="/media/{{Achievements.certificate}}" class="button">View</a></td>
+    <td>
+       
+    <a href="{% url 'SAP-delete' Achievements.id %}" class="button">Delete</a></td>
+
+</tr>
+
+{% empty %}
+<h3>No items</h3>
+{% endfor %}
+</table>
+</div>
+{% else %}
+<h3>You are not superuser</h3>
+{% endif %}
+{% endblock %}
+
+
+
+
+

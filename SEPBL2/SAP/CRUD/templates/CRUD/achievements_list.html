@@ -2,25 +2,15 @@
 
 {% block content %}
 {% if request.user.is_authenticated %}
-<!--<p>{{request.user}}</p>-->
-<p>First Name: {{request.user.first_name}}</p>
-<p>Last Name: {{request.user.last_name}}</p>
-<!--<a href="{% url 'logout' %}">Logout</a>
-<a href="{% url 'change_password' %}">Change password</a>
-{% else %}
-<a href="{% url 'login' %}">Login</a>
-{% endif %}-->
+<h4>Welcome {{request.user.first_name}}&nbsp;{{request.user.last_name}}!</h4>
+
 <hr>
 <div class="container">
-<form method="GET">
-    <input type="text" name="search_area" value="{{search_input}}">
-    <input type="submit" value="search">
-</form>
-<a href="{% url 'SAP-create' %}">Add Achievements</a>
+<a href="{% url 'SAP-create' %}" class="button">Add Achievements</a>
 <table class="table">
     <tr>
     <th>Title</th>
-    <th>Date</th>
+    <th>Date and Time</th>
     <th>Financial Support</th>
     <th>Activity Remarks</th>
     <th>Certificate</th>
@@ -30,7 +20,7 @@
 
 <tr>
     <td>{{Achievements.title}}</td>
-    <!--<td><a href="{% url 'Details' Achievements.id %}">View</a></td>-->
+    
     <td>{{Achievements.created}}</td>
     <td>{{Achievements.support}}</td>
     <td>{{Achievements.description}}</td>
@@ -41,9 +31,9 @@
 
 </tr>
 {%empty%}
-<h3>No items</h3>
+<h3>Your achievements will appear below</h3>
 {%endfor%}
-
+{%endif%}
 </table>
 </div>
 {% endblock %}
